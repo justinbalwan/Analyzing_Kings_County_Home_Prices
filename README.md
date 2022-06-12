@@ -43,7 +43,7 @@ After dropping these columns, the remaining columns I was experimenting with wer
 I checked the data type of each column and discovered the only non-numeric column: condition. I then transformed the condition column by converting it from a non-numeric data type to a numeric data type by using one hot encoder. This broke down condition into it's subsections: cond_avg, cond_fair, cond_good, cond_poor, cond_verygood. Each subsection became data type float.
 
 After this, I separated my remaining columns into distinctive 'continuous' and 'categorical' arrays. I then modeled each array to analyze it further; I created histograms for my categorical variables and a scatter matrix for my continuous variables.
-![categorical histograms](categorical%20histograms.jpg)
+![categorical histograms](images/categorical%20histograms.jpg)
 ![continuous scatter matrix](file:///Users/justin/Desktop/Flatiron/continuous%20scatter%20matrix.jpg)
 
 #### Data Preparation
