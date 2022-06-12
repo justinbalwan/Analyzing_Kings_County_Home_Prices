@@ -43,14 +43,14 @@ After dropping these columns, the remaining columns I was experimenting with wer
 I checked the data type of each column and discovered the only non-numeric column: condition. I then transformed the condition column by converting it from a non-numeric data type to a numeric data type by using one hot encoder. This broke down condition into it's subsections: cond_avg, cond_fair, cond_good, cond_poor, cond_verygood. Each subsection became data type float.
 
 After this, I separated my remaining columns into distinctive 'continuous' and 'categorical' arrays. I then modeled each array to analyze it further; I created histograms for my categorical variables and a scatter matrix for my continuous variables.
-![categorical histograms](data/categorical%20histograms.jpg)
+![categorical histograms](categorical%20histograms.jpg)
 ![continuous scatter matrix](file:///Users/justin/Desktop/Flatiron/continuous%20scatter%20matrix.jpg)
 
 #### Data Preparation
 Since my target variable is 'price' I had to ensure there were nothing wrong with it since it is my target variable. I attempted to use the train v. test method to normalize the target variable. It dropped the target variable from the original dataframe and set it as "y". All other variables were "X". This process made me realize the power of logging; it can be a useful tool to help normalize features.
 
 Right after normalizing price, I chose to build a heatmap that displays the correlation of all the columns in relation to my target variable, price.
-![heatmap](file:///Users/justin/Desktop/Flatiron/heatmap.png)
+![heatmap](heatmap.png)
 From the heatmap, I discovered that my most correlated variable was sqft_living. I checked how strongly correlated this variable was to my target variable by using cross validation. My train score and validation score were about .01 off, indicating that it was a very strong model.
 
 Lastly in the preparation stage, I wanted to create two models; one that shows the most to least strongly correlated variables, and another that shows a scatter matrix of all the variables, intending to highlight the non-normal distributions that exist. This would allow me to determine which variables I would need to normalize during my modeling stage.
