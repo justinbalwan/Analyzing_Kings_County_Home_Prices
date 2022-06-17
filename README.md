@@ -43,8 +43,8 @@ After dropping these columns, the remaining columns I was experimenting with wer
 I checked the data type of each column and discovered the only non-numeric column: condition. I then transformed the condition column by converting it from a non-numeric data type to a numeric data type by using one hot encoder. This broke down condition into it's subsections: cond_avg, cond_fair, cond_good, cond_poor, cond_verygood. Each subsection became data type float.
 
 After this, I separated my remaining columns into distinctive 'continuous' and 'categorical' arrays. I then modeled each array to analyze it further; I created histograms for my categorical variables and a scatter matrix for my continuous variables.
-![categorical histograms](/images/categorical_histograms.jpg)
-![continuous scatter matrix](/images/continuous_scatter_matrix.jpg)
+![categorical histograms](/images/categorical_histograms.png)
+![continuous scatter matrix](/images/continuous_scatter_matrix.png)
 
 #### Data Preparation
 Since my target variable is 'price' I had to ensure there were nothing wrong with it since it is my target variable. I attempted to use the train v. test method to normalize the target variable. It dropped the target variable from the original dataframe and set it as "y". All other variables were "X". This process made me realize the power of logging; it can be a useful tool to help normalize features.
@@ -67,9 +67,9 @@ As you can see, the funnel-like shape transformed into a more scattered, normali
 #### Baseline Model
 Baseline Score R²: 0.0
 #### Simple Linear Regression Model
-Simple Linear Regression R²: 0.49268789904035093
+Simple Linear Regression R²: 0.34665470419864375
 #### First Multiple Linear Regression Model
-First Multiple Linear Regression R²: 0.34665470419864375
+First Multiple Linear Regression R²: 0.49268789904035093
 #### Second Multiple Linear Regression Model
 Second Multiple Linear Regression Model R²: 0.45535727584899854
 #### Third Multiple Linear Regression Model
@@ -78,9 +78,13 @@ Third Multiple Linear Regression Model R²: 0.5343447212266113
 [models_rsquared_values](/images/models_rsquared_values.png)
 [model_regression_coefficients](/images/model_regression_coefficients.png)
 
+
 ## Conclusion
 After comparing each model to one another, it was determined that my third/final multiple regression model had the highest adjusted R-squared value. What does this mean? Since my third model had the highest adjusted R-squared value, it better fits my observation. It will be the model we will use to make predictions going forward since most of the scattered data points are centered/normalized around the line of best fit; there are smaller differences between observed data and fitted values (fitted values are on the line of best fit).
 
-In addition, it was found that the strongest home price predictor was sqft_living, which is what we expected.
+[significant_house_price_predictors](/images/significant_house_price_predictors.png)
 
-In the future, I think it would be useful to include more predicitive factors besides sqft_living and sqft_lot. This will help to get a better understanding of what other types of home renovation factors would be useful in increasing the values of homes.
+For my agency, I would recommend that they primarily renovate houses based on square foot of living. Secondly, I would recommend that they renovate houses by increasing the square foot of living, number of floors, and number of bathrooms. Lastly, I would strongly recommend that they do not waste time renovating homes that have a poor home condition.
+
+
+In the future, steps should be taken to investigate the high multicollinerarity in my final model. In addition, I think it would be useful to include more predicitive factors besides sqft_living and sqft_lot. This will help to get a better understanding of what other types of home renovation factors would be useful in increasing the values of homes.
